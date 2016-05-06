@@ -1,3 +1,6 @@
+#!/usr/bin/env ruby
+# ^ syntax
+
 require boxen::environment
 require homebrew
 require gcc
@@ -90,6 +93,7 @@ node default {
 
   ## DC addtions
   # cli tools
+  include vim
   include ipmitool
   include iterm2::stable
 
@@ -98,11 +102,13 @@ node default {
   class { 'vagrant':
     completion => true,
   }
-
+  vagrant::plugin { ['landrush','nugrant']: }
 
   # Browsers
-  include chrome
-  include firefox
- 
+  package { 'google-chrome': provider => 'brewcask' }
+  package { 'firefox': provider => 'brewcask' }
+
+  # Miscellaneous
+  package { 'skype': provider => 'brewcask' }
 
 }
