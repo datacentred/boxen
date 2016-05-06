@@ -102,6 +102,7 @@ node default {
 
   # Browsers
   include chrome
-  
+  include firefox
+ 
 
 }
